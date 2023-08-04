@@ -1,4 +1,5 @@
-import { Text, View, Image, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet } from 'react-native'
+import Text from './Text'
 
 const styles = StyleSheet.create({
   avatar: {
@@ -9,9 +10,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexGrow: 1,
     padding: 10,
-  },
-  respositoryName: {
-    fontWeight: 'bold',
   },
   description: {
     paddingRight: 50
@@ -46,7 +44,7 @@ const ImageAndInfo = ({ repository }) => {
     <View style={styles.imageAndInfo}>
       <Image style={styles.avatar} source={{ uri: repository.ownerAvatarUrl }} />
       <View style={styles.info}>
-        <Text style={styles.respositoryName}>{repository.fullName}</Text>
+        <Text fontWeight='bold'>{repository.fullName}</Text>
         <Text style={styles.description}>{repository.description}</Text>
         <Text style={styles.language}>{repository.language}</Text>
       </View>
@@ -58,7 +56,7 @@ const KeyNumber = ({ label, value }) => {
   const formattedValue = value < 1000 ? value : `${(value / 1000).toFixed(1)}k`
   return (
     <View style={styles.keyNumber}>
-      <Text style={{ fontWeight: 'bold' }}>{formattedValue}</Text>
+      <Text fontWeight='bold'>{formattedValue}</Text>
       <Text>{label}</Text>
     </View>
   )

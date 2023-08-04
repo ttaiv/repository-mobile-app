@@ -1,23 +1,23 @@
-import { View, StyleSheet, Text, ScrollView } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import { Link } from 'react-router-native'
 import Constants from 'expo-constants'
+import Text from './Text'
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
     paddingBottom: 10,
-    backgroundColor: '#24292e'
+    backgroundColor: '#24292e' 
   },
   text: {
     color: '#fff',
-    fontSize: 17,
     padding: 10
   }
 })
 
 const AppBarTab = ({ text, path }) => (
   <Link to={path} >
-    <Text style={styles.text}>{text}</Text>
+    <Text style={styles.text} fontSize='subheading'>{text}</Text>
   </Link>
 )
 
