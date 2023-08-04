@@ -1,17 +1,87 @@
-import { Text, View } from 'react-native'
+import { Text, View, Image, StyleSheet } from 'react-native'
 
-const reposiToryItem = ({ repository }) => {
+const styles = StyleSheet.create({
+  avatar: {
+    width: 50,
+    height: 50,
+  },
+  imageAndInfo: {
+    flexDirection: 'row',
+    flexGrow: 1,
+    padding: 10,
+  },
+  respositoryName: {
+    fontWeight: 'bold',
+  },
+  description: {
+    paddingRight: 50
+  },
+  container: {
+    backgroundColor: 'white',
+    paddingBottom: 10,
+  },
+  info: {
+    paddingLeft: 10,
+  },
+  language: {
+    backgroundColor: '#0366d6',
+    color: 'white',
+    padding: 5,
+    alignSelf: 'flex-start',
+    marginTop: 5,
+    fontSize: 12,
+  },
+  keyNumbers: {
+    paddingTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  keyNumber: {
+    alignItems: 'center',
+  }
+})
+
+const ImageAndInfo = ({ repository }) => {
   return (
-    <View>
-      <Text>Full name: {repository.fullName}</Text>
-      <Text>Description: {repository.description}</Text>
-      <Text>Language: {repository.language}</Text>
-      <Text>Stars: {repository.stargazersCount}</Text>
-      <Text>Forks: {repository.forksCount}</Text>
-      <Text>Reviews: {repository.reviewCount}</Text>
-      <Text>Rating: {repository.ratingAverage}</Text>
+    <View style={styles.imageAndInfo}>
+      <Image style={styles.avatar} source={{ uri: repository.ownerAvatarUrl }} />
+      <View style={styles.info}>
+        <Text style={styles.respositoryName}>{repository.fullName}</Text>
+        <Text style={styles.description}>{repository.description}</Text>
+        <Text style={styles.language}>{repository.language}</Text>
+      </View>
     </View>
   )
 }
 
-export default reposiToryItem
+const KeyNumber = ({ label, value }) => {
+  const formattedValue = value < 1000 ? value : `${(value / 1000).toFixed(1)}k`
+  return (
+    <View style={styles.keyNumber}>
+      <Text style={{ fontWeight: 'bold' }}>{formattedValue}</Text>
+      <Text>{label}</Text>
+    </View>
+  )
+}
+
+const KeyNumbers = ({ repository }) => {
+  return (
+    <View style={styles.keyNumbers}>
+      <KeyNumber label='Stars' value={repository.stargazersCount} />
+      <KeyNumber label='Forks' value={repository.forksCount} />
+      <KeyNumber label='Reviews' value={repository.reviewCount} />
+      <KeyNumber label='Rating' value={repository.ratingAverage} />
+    </View>
+  )
+}
+
+const ReposiToryItem = ({ repository }) => {
+  return (
+    <View style={styles.container}>
+      <ImageAndInfo repository={repository} />
+      <KeyNumbers repository={repository} />
+    </View>
+  )
+}
+
+export default ReposiToryItem
