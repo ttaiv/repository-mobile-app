@@ -1,5 +1,6 @@
 import { View, Image, StyleSheet } from 'react-native'
 import Text from './Text'
+import theme from '../theme'
 
 const styles = StyleSheet.create({
   avatar: {
@@ -8,22 +9,21 @@ const styles = StyleSheet.create({
   },
   imageAndInfo: {
     flexDirection: 'row',
-    flexGrow: 1,
     padding: 10,
   },
   description: {
     paddingRight: 50
   },
   container: {
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.secondaryBackground,
     paddingBottom: 10,
   },
   info: {
     paddingLeft: 10,
   },
   language: {
-    backgroundColor: '#0366d6',
-    color: 'white',
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.textSecondary,
     padding: 5,
     alignSelf: 'flex-start',
     marginTop: 5,

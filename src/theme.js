@@ -1,9 +1,12 @@
 const theme = {
   colors: {
     textPrimary: '#24292e', // black
-    textSecondary: '#586069', // grey
+    textSecondary: '#fff', // white
+    textOther: '#586069', // grey
     primary: '#0366d6', // blue
-    appBarBackground: '#24292e', // black
+    secondary: '#24292e', // black
+    primaryBackground: '#e1e4e8', // grey
+    secondaryBackground: 'fff', // white
   },
   fontSizes: {
     body: 14,
