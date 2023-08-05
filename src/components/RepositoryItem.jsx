@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     paddingRight: 50
   },
   container: {
-    backgroundColor: theme.colors.secondaryBackground,
+    backgroundColor: theme.colors.backgroundSecondary,
     paddingBottom: 10,
   },
   info: {
