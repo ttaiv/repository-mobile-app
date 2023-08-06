@@ -14,4 +14,11 @@ export const GET_REPOSITORIES = gql`
   ${REPOSITORY_DETAILS}
 `
 
-// other queries...
+export const ME = gql`
+  query {
+    me {
+      id
+      username
+    }
+  }
+`
