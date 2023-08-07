@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { RepositoryListContainer } from "../../components/RepositoryList"
 import { render, screen } from '@testing-library/react-native'
 
