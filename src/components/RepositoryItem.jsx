@@ -75,7 +75,7 @@ const KeyNumbers = ({ repository }) => {
 
 const ReposiToryItem = ({ repository }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID='repositoryItem'>
       <ImageAndInfo repository={repository} />
       <KeyNumbers repository={repository} />
     </View>
