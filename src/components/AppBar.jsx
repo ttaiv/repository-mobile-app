@@ -31,7 +31,6 @@ const AppBar = () => {
   const userResult = useQuery(ME)
 
   if (userResult.loading) {
-    console.log('loading')
     return null
   }
   const userSignedIn = userResult.data.me !== null

@@ -1,4 +1,5 @@
-import { View, Image, StyleSheet } from 'react-native'
+import { View, Image, StyleSheet, Pressable } from 'react-native'
+import { useNavigate } from 'react-router-native'
 import Text from './Text'
 import theme from '../theme'
 
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
   }
 })
 
+
 const ImageAndInfo = ({ repository }) => {
   return (
     <View style={styles.imageAndInfo}>
@@ -72,12 +74,21 @@ const KeyNumbers = ({ repository }) => {
     </View>
   )
 }
+// Cildren is 'View in GitHub' button if item is rendered on its own page
+const ReposiToryItem = ({ repository, children }) => {
+  const navigate = useNavigate()
+  
+  const handlePress = (repositoryId) => {
+    navigate(`/${repositoryId}`)
+  }
 
-const ReposiToryItem = ({ repository }) => {
   return (
     <View style={styles.container} testID='repositoryItem'>
-      <ImageAndInfo repository={repository} />
-      <KeyNumbers repository={repository} />
+      <Pressable onPress={() => handlePress(repository.id)}>
+        <ImageAndInfo repository={repository} />
+        <KeyNumbers repository={repository} />
+      </Pressable>
+      {children}
     </View>
   )
 }
