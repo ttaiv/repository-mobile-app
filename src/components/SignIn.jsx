@@ -47,7 +47,7 @@ const SignIn = () => {
   const onSubmit = async (values) => {
     const { username, password } = values
     try {
-      await signIn({ username, password})
+      await signIn({ username, password })
       navigate('/')
     } catch (error) {
       console.log('error in sign in', error)
