@@ -59,7 +59,8 @@ const UserReviews = () => {
       data={userReviews}
       ItemSeparatorComponent={() => <View style={styles.seperator} />}
       renderItem={({ item }) => 
-        <UserReview review={item} viewRepository={viewRepository} handleDelete={handleDelete}/>}
+        <UserReview review={item} viewRepository={viewRepository} handleDelete={handleDelete}/>
+      }
       keyExtractor={({ id }) => id }
     />
   )

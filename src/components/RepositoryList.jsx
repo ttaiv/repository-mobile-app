@@ -32,7 +32,7 @@ export class RepositoryListContainer extends Component {
   }
 
   render() {
-    const { repositories } = this.props
+    const { repositories, onEndReach } = this.props
 
     const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
@@ -51,6 +51,8 @@ export class RepositoryListContainer extends Component {
         renderItem={renderItem}
         ItemSeparatorComponent={ItemSeparator}
         ListHeaderComponent={this.renderHeader}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.5}
       />
     )
   }
@@ -79,11 +81,19 @@ const SortAndFilterOptions = ({ selectedSort, setSelectedSort, setFilter }) => (
 const RepositoryList = () => {
   const [selectedSort, setSelectedSort] = useState('latest')
   const [filter, setFilter] = useState('')
-  const { repositories } = useRepositories(selectedSort, filter)
+  const { repositories, fetchMore } = useRepositories({
+    selectedSort,
+    filter,
+    first: 10,
+  })
 
   const debouncedSetFilter = useDebouncedCallback(filter => {
     setFilter(filter)
   }, 500)
+
+  const onEndReach = () => {
+    fetchMore()
+  }
 
   return <RepositoryListContainer 
     repositories={repositories}
@@ -91,6 +101,7 @@ const RepositoryList = () => {
     setSelectedSort={setSelectedSort}
     setFilter={debouncedSetFilter}
     filter={filter}
+    onEndReach={onEndReach}
   />
 }
 
