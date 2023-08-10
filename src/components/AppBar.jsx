@@ -1,7 +1,7 @@
 import { View, StyleSheet, ScrollView } from 'react-native'
 import { Link } from 'react-router-native'
 import { useQuery } from '@apollo/client'
-import { ME } from '../graphql/queries'
+import { GET_CURRENT_USER } from '../graphql/queries'
 import SignOutButton from './SignOutButton'
 import Constants from 'expo-constants'
 import Text from './Text'
@@ -28,7 +28,7 @@ const AppBarTab = ({ text, path }) => (
 
 const AppBar = () => {
 
-  const userResult = useQuery(ME)
+  const userResult = useQuery(GET_CURRENT_USER)
 
   if (userResult.loading) {
     return null
@@ -41,7 +41,8 @@ const AppBar = () => {
         <AppBarTab text="Repositories" path="/" />
         {!userSignedIn && <AppBarTab text="Sign in" path="/signin" />}
         {!userSignedIn && <AppBarTab text="Sign up" path="/signup" />}
-        {userSignedIn && <AppBarTab text="Create a review" path="createReview" />}
+        {userSignedIn && <AppBarTab text="Create a review" path="/createReview" />}
+        {userSignedIn && <AppBarTab text="My reviews" path="/myReviews" />}
         {userSignedIn && <SignOutButton textStyle={styles.text} />}
       </ScrollView>
     </View>
