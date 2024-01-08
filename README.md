@@ -1,0 +1,1 @@
+A mobile app implemented with React Native that allows users to rate GitHub repositories. Developed as an exercise on University of Helsinki course Full stack open. Course materials: https://fullstackopen.com/en/
