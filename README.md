@@ -1,1 +1,1 @@
-A mobile app implemented with React Native that allows users to rate GitHub repositories. Developed as an exercise on University of Helsinki course Full stack open. Course materials: https://fullstackopen.com/en/
+A mobile app implemented with React Native that allows users to rate GitHub repositories. Uses GraphQL for fetching data from server. Developed as an exercise on University of Helsinki course Full stack open (part 10 React Native). Course materials: https://fullstackopen.com/en/
